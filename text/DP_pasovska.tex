@@ -1,0 +1,129 @@
+% !TeX spellcheck = cs_CZ
+% options:
+% thesis=B bachelor's thesis
+% thesis=M master's thesis
+% czech thesis in Czech language
+% slovak thesis in Slovak language
+% english thesis in English language
+% hidelinks remove colour boxes around hyperlinks
+\RequirePackage{color}
+\definecolor{gr1}{RGB}{0,153,51}
+\documentclass[thesis=M,czech]{FITthesis}[2012/06/26]
+
+
+\usepackage[utf8]{inputenc} % LaTeX source encoded as UTF-8
+
+\usepackage{graphicx} %graphics files inclusion
+\usepackage{amsmath} %advanced maths
+\usepackage{amssymb} %additional math symbols
+\usepackage{rotating}
+
+\usepackage{dirtree} %directory tree visualisation
+% % list of acronyms
+% \usepackage[acronym,nonumberlist,toc,numberedsection=autolabel]{glossaries}
+% \iflanguage{czech}{\renewcommand*{\acronymname}{Seznam pou{\v z}it{\' y}ch zkratek}}{}
+% \makeglossaries
+ 
+
+\newcommand{\tg}{\mathop{\mathrm{tg}}} %cesky tangens
+\newcommand{\cotg}{\mathop{\mathrm{cotg}}} %cesky cotangens
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+% ODTUD DAL VSE ZMENTE
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+
+\department{Katedra geomatiky     }
+\acknowledgements{Studijní program Geodézie a kartografie}
+
+\title{Název}
+\authorGN{Petra} %(křestní) jméno (jména) autora
+\authorFN{Pasovská} %příjmení autora
+\authorWithDegrees{Bc. Petra Pasovská} %jméno autora včetně současných akademických titulů
+\supervisor{Ing. Tomáš Janata, Ph.D.}
+\acknowledgements{Děkuji Ing. Tomáši Janatovi, Ph.D., za odborné vedení práce a cenné rady, které mi pomohly tuto práci zkompletovat.}
+\abstractCS{Abstrakt CZ}
+\abstractEN{Abstrakt EN}
+\placeForDeclarationOfAuthenticity{V~Praze}
+\declarationOfAuthenticityOption{1} %volba Prohlášení (číslo 1-6)
+\keywordsCS{klicova slova \newpage}
+\keywordsEN{keywords}
+
+\begin{document}
+
+% \newacronym{CVUT}{{\v C}VUT}{{\v C}esk{\' e} vysok{\' e} u{\v c}en{\' i} technick{\' e} v Praze}
+% \newacronym{FSv}{FSv}{Fakulta stavebn{\' i}}
+
+\begin{introduction}
+Úvod
+
+
+\end{introduction}
+
+\chapter{Rešerše literatury}
+
+
+\chapter{Fyzicko geografická analýza}
+
+
+\section{Analýza povrchu (topografie??)}
+
+\section{Geologie}
+
+\section{Hydrologie}	
+
+
+\section{Meteorologie}
+
+\section{Významná fauna a flóra}
+
+
+\chapter{Kulturní analýza}
+
+
+\section{Historie + pověsti}
+
+\section{Zobrazení řeky a okolí na dobových fotografiích a mapových dílech}
+
+\section{Významná města podél řeky}	
+
+
+\section{Turistika}
+
+
+\chapter{Webová stránka}
+
+\chapter{Diskuze}
+
+
+
+\begin{conclusion}
+Závěr
+\end{conclusion}
+
+
+\appendix
+
+\chapter{Seznam použitých zkratek}
+% \printglossaries
+\begin{description}
+	\item[GIS] Geografický informační systém
+
+\end{description}
+
+
+
+\chapter{Obsah přiloženého CD}
+
+\begin{figure}
+	\dirtree{%
+		.1 readme.txt\DTcomment{stručný popis obsahu CD}.
+		.1 grafy\DTcomment{složka obsahující výsledné grafy}.
+		.1 rastry\DTcomment{složka obsahující testované rastry}.
+		.1 rozklad.m\DTcomment{skript na výpočet rozkladu RGB barev}.
+		.1 LaTex\DTcomment{zdrojová forma práce ve formátu \LaTeX{}}.	
+		.1 text\DTcomment{text práce}.
+		.2 BP\_Pasovska\_Petra\_2017\DTcomment{text práce v PDF}.	
+	}
+\end{figure}
+
+\end{document}
