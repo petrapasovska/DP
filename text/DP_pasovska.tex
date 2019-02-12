@@ -85,33 +85,58 @@ Počátky studia vody na Zemi však sahají do roku 3000 př. n. l. V té době 
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=10cm, angle =270]{pics/ot1.jpg}
+	\includegraphics[width=9cm, angle =270]{pics/ot1.jpg}
 	\caption{Otava na Podskalí ve Strakonicích na podzim}
 	\label{obrazek:ot1}
 \end{figure}
 
 
 \section{Vysvětletní základních termínů (pojmů??)}
-Při hydrologické analýze jsou používány základní hydrologické termíny. Ty jsou zde stručně popsány a vysvětleny, aby 
+Při hydrologické analýze jsou používány základní hydrologické termíny. Ty jsou zde stručně popsány a vysvětleny, neboť jsou v rámci práce používány a je předpokládána jejich znalost.
+
 
 \begin{description}
-\item[pramen] text
-\item[říční tok] text
-\item[říční síť] text
-\item[hustota říční sítě] text
-\item[povodí] text
-\item[rozvodí] text
-\item[úmoří] text
-\item[přítok] text
-\item[ústí] text
-\item[zátopové území] text
+\item[Pramen:] místo přirozeného výtoku podzemní vody, může být studený nebo termální, v oblastech se sopečnou činností gejzír
+\item[Soutok:] místo, kde se setkávají nejméně dva vodní toky
+\item[Vodní tok:] voda tekoucí po zemském povrchu v korytě mezi břehy, větší toky jsou označovány jako řeky, menší toky jsou potoky
+\item[Říční síť:] říční síť je půdorysná síť hlavního toku řeky a jejích přítoků, tvar je závislý na geologických a fyzickogeografických podmínkách povodí řeky
+\item[Hustota říční sítě:] poměr délky všech toků k ploše povodí
+\item[Povodí:] plocha území, ze kterého tok odvádí povrchovou a podpovrchovou vodu
+\item[Rozvodí:] hranice mezi jednotlivými povodími
+\item[Rozvodnice:] pomyslná čára mezi sousedními povodími
+\item[Úmoří:] plocha, ze které se všechna povrchová voda odvádí do moře nebo oceánu
+\item[Přítok:] tok nižšího řádu, který se vlévá do toku vyššího řádu
+\item[Ústí:] část toku, kde se vlévá do jiného toku, vodní nádrže či oceánu
+\item[Zátopové území:] část území v okolí vodních toků, které je periodicky zaplavované zvýšenými průtoky (pozn.: též inundace)
 \end{description}
 
 
 
 \section{Hydrologická analýza}
+V rámci práce byla provedena jednoduchá základní hydrologická analýza. Pro analýzu byla použita data z katalogu DIBAVOD. Pro tvorbu analýzy byl použit software ArcGIS a MS Excel. Analýza byla prováděna dle studijních materiálů Univerzity Karlovy Katedry fyzické geografie a geoekologie. \cite{UK}
+
+Otava vzniká na Šumavě u Čeňkovy Pily soutokem Vydry a Křemelné. Vydra pramení na SZ svahu Luzného ve výšce 1215 m n. m. Díky okolním rašeliništím má Vydra rezavohnědou barvu. Svůj název si nese až po soutoku s Rokladnským potokem v obci Modrava\footnote{V některých publikacích se uvádí název Vydra již od Březníku}. Řeka Křemelná pramení v Železnorudské hornatině v přírodní rezervací Prameniště a severním svahu hory Pancíř (1214 m n. m.). \cite{SMOOS}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=9cm]{pics/vydra.jpg}
+	\caption{Řeka Vydra}
+	\label{obrazek:ot1}
+\end{figure}
+
+Délka řeky je 111.7 km a plocha povodí je 3841 km$^2$. Ze znalosti délky a plochy povodí můžeme dané povodí charakterizovat dle vzorce:
+\\
+
+$\alpha = \frac{P}{L^2} = \frac{3841}{111.7^2} = 0.31$ \\
 
 
+Povodí lze tedy charakterizovat jako vějířovité. Dále je možné vypočítat Graveliuv koeficient a koeficient protáhlosti povodí. Pro výpočet Graveliova koeficientu je zapotřebí znát délku rozvodnice $L_R$\footnote{Délka rozvodnice byla určena v software ArcGIS výpočtem geometrie prvku}. \\
+
+$Gravieluv\ koeficient: K_G = \frac{L_R}{2 \sqrt{P \cdot \pi}} = \frac{412}{2\sqrt{3841\cdot \pi}} = 1.88$ \\
+
+$Koeficient\ protáhlosti\ povodí: R_E = \frac{2\cdot \sqrt{P / \pi}}{L} = \frac{2 \cdot \sqrt{3841 / \pi}}{111.7} = 0.63 $ \\
+
+Otava má několik přítoků. Mezi nejznámější patří Volyňka, Blanice a Lomnice. Otava ústí do Vltavy pod hradem Zvíkov. Povodí Otavy spadá do úmoří Severního moře (Otava $\rightarrow$ Vltava $\rightarrow$ Labe). 
 
 
 
@@ -140,9 +165,10 @@ Závěr
 \appendix
 
 \chapter{Seznam použitých zkratek}
+% seřadit podle abecedy
 % \printglossaries
 \begin{description}
-	\item[GIS] Geografický informační systém
+	\item[DIBAVOD] Digitální báze vodohospodářských dat
 
 \end{description}
 
