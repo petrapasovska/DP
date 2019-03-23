@@ -40,13 +40,13 @@
 \authorFN{Pasovská} %příjmení autora
 \authorWithDegrees{Bc. Petra Pasovská} %jméno autora včetně současných akademických titulů
 \supervisor{Ing. Tomáš Janata, Ph.D.}
-\acknowledgements{Děkuji Ing. Tomáši Janatovi, Ph.D., za odborné vedení práce a cenné rady, které mi pomohly tuto práci zkompletovat. Velké díky také patří mé rodině a přátelům, kteří mi byli po dobu zpracování velkou oporou.}
-\abstractCS{Abstrakt CZ}
-\abstractEN{Abstrakt EN}
+\acknowledgements{Děkuji Ing. Tomáši Janatovi, Ph.D., za odborné vedení práce a cenné rady, které mi pomohly tuto práci zkompletovat. Velké díky také patří mé rodině a přátelům, kteří mi byli po dobu zpracování velkou oporou. Ráda bych také poděkovala panu Ladislavu Hollovi, který mi velmi pomohl se sběrem historických fotografiích použitých v této práci a pracovníkům Stavebního úřadu ve Strakonicích za zapůjčení stavebních plánů Strakonického hradu.}
+\abstractCS{Cílem této práce je vizualizace údolí řeky Otavy ve vybraném zájmovém území. Podstatou práce je zpracování kartografických podkladů pro různé časové hladiny. Výsledné zpracování dat je doplněno o generalizovaný 3D model Strakonického hradu. Součástí práce je také sběr historických fotografií zachycujících řeku Otavu a jejich porovnání se současným stavem. Okolí řeky je následně doplněno o objekty vytvořené konceptuálním modelováním v programu CityEngine. Na základě zpracování kartografických podkladů je  možné porovnat změnu využití půdy a říčního koryta. (tady to ještě poupravit ten konec, nějak pěkně vymyslet účel práce) }
+\abstractEN{The aim of this work is visualize the Otava River valley in the selected area of interest. The essence of this thesis is the processing of cartographic materials for various time periods. The result is complemented by a generalized 3D model of Strakonice Castle. The thesis also includes the collection of historical photographs depicting the Otava River and their comparison with the current state. The surroundings of the river are then supplemented with objects created by conceptual modeling in the CityEngine program. }
 \placeForDeclarationOfAuthenticity{V~Praze}
 \declarationOfAuthenticityOption{1} %volba Prohlášení (číslo 1-6)
-\keywordsCS{klicova slova \newpage}
-\keywordsEN{keywords}
+\keywordsCS{Otava, řeka, údolí, Strakonice, georeferencování, vektorizace, 3D model, ArcGIS, CityEngine, Sketchup \newpage}
+\keywordsEN{Otava, river, valley, Strakonice, georeferencing, vectorization, 3D model, ArcGIS, CityEngine, Sketchup}
 
 \begin{document}
 
@@ -54,13 +54,21 @@
 % \newacronym{FSv}{FSv}{Fakulta stavebn{\' i}}
 
 \begin{introduction}
-Úvod
+Voda, nejdůležitější složka na Zemi. Zaujímá klíčové postavení nejen v přírodě, ale i v činnosti člověka. Přesto, že má voda schopnost se neustále obnovovat, její zásoby každým rokem klesají. Voda je nepostradatelnou součástí našich životů. Je nepostradatelným zdrojem pitné vody, využívá se pro zavlažování či v energetice. 
+
+Pro zpracování bylo vybráno území v jižních Čechách poblíž města Strakonice, nazývané též střední Pootaví, kde díky velmi suchým létům začínají vysychat studny a některé domácnosti se díky tomu mohou ocitnout zcela bez vody. Kontrastem k těmto suchým obdobím jsou často zvýšené hladiny řeky Otavy, a to zejména na jaře při tání sněhové pokrývky na Šumavě a v srpnu, kdy je často velmi vydatný déšť, který se do vyschlé půdy nedokáže vsáknout. 
+
+Pro zhodnocení a vizualizaci údolí řeky Otavy bylo použito několik historických kartografických děl. Nejstarší podklady jsou Císařské povinné otisky stabilního katastru (1826-1843). (SEPSAT DALŠÍ KARTOGRAFICKÉ PODKLADY ZE KTERÝCH SE VYCHÁZELO). Neodmyslitelným symbolem řeky Otavy je Strakonický hrad, který vznikl na soutoku Otavy a Volyňky v 1. polovině 13. století. Z důvodu významnosti této stavby byl vytvořen generalizovaný 3D model hradu, který vizuálně doplní vytvořený model řeky. 
+
+V rámci diplomové práce byl proveden také sběr historických fotografií. (DOPSAT)
+
+Diplomová práce je rozdělena na čtyři hlavní části. Začátek práce poskytuje seznámení s řekou Otavou z hydrologického, historického i kulturního hlediska. Ve druhé části jsou blíže popsána použitá data. Následně je konkrétně popsán způsob zpracování dat a metody, které byly v rámci diplomové práce použity. Závěr je věnován prezentování výsledků na webové stránce, která byla vytvořena v jazyce (NO PROSTĚ TADY SE ROZEPSAT AŽ SE ROZMYSLÍM JAK TU STRÁNKU NAPSAT)
 
 
 \end{introduction}
 
 \chapter{Rešerše literatury}
-bla bla
+
 
 
 
@@ -133,33 +141,38 @@ Otava vzniká na Šumavě u Čeňkovy Pily soutokem Vydry a Křemelné. Vydra pr
 
 Otava je levostranným přítokem Vltavy, do níž se vlévá pod hradem Zvíkov poblíž Orlické přehrady. Povodí Otavy spadá do úmoří Severního moře (Otava~$\rightarrow$~Vltava~$\rightarrow$~Labe~$\rightarrow$~Severní moře ). 
 
+Pokud bychom chtěli popsat řeku čísly, pak její délka je 111.7 km a plocha povodí 3841 km$^2$. Povodí Otavy lze označit jako vějířovité. 
 
-Pokud bychom chtěli popsat řeku čísly, pak její délka je 111.7 km a plocha povodí 3841 km$^2$. Ze znalosti délky a plochy povodí můžeme dané povodí popsat dle vzorce pro charakteristiku povodí:\\
+\clearpage
 
-
-$$\alpha = \frac{P}{L^2} = \frac{3841}{111.7^2} = 0.31$$ \\
-
-
-Povodí lze tedy označit jako vějířovité. Dále je možné vypočítat Graveliuv koeficient a koeficient protáhlosti povodí. Pro výpočet Graveliova koeficientu je zapotřebí znát délku rozvodnice $L_R$\footnote{Délka rozvodnice byla určena v software ArcGIS výpočtem geometrie prvku}. \\
-
-$Gravieluv\ koeficient: K_G = \frac{L_R}{2 \sqrt{P \cdot \pi}} = \frac{412}{2\sqrt{3841\cdot \pi}} = 1.88$ \\
-
-$Koeficient\ protáhlosti\ povodí: R_E = \frac{2\cdot \sqrt{P / \pi}}{L} = \frac{2 \cdot \sqrt{3841 / \pi}}{111.7} = 0.63 $ \\
-
-
-
-Ze znalosti délky všech toků jsme schopni vypočítat hustotu říční sítě.\\
-
-$Hustota\ říční\ sítě: r = \frac{\sum L}{P} = \frac{a}{b} $
-
-
-\section{Kulturní a historické informace o ??? vymyslet pěkný název}
-Otava protéká několika historicky významnými městy. Mezi nejvýznamnější města, kterými řeka protéká, patří Sušice, Horažďovice, Strakonice a Písek. Blíže popsány jsou také Žichovice z důvodu nedaleké zříceniny hradu Rabí.
+\section{Významná města na Otavě}
+Otava protéká několika historicky významnými městy. Mezi nejznámější města, kterými řeka protéká, patří Sušice, Horažďovice, Strakonice a Písek. Blíže popsány jsou také Žichovice z důvodu nedaleké zříceniny hradu Rabí.
 
 \subsection{Sušice}
+Sušice, označovaná také jako Brána Šumavy. Leží ve Svatoborské vrchovině na řece Otavě. Název Sušice je pravděpodobně označení pro suché místo uprostřed vodních toků Otavy a Roušarky. Obydlení oblasti Sušice lze datovat na přelom doby haltštatské a laténské v 5. století př. n. l. První obyvatelé byli Kelti, po nichž se do dneška dochovala dvě keltská hradiště, hradiště Sedlo, nacházející se zhruba 1 km jižně od Albrechtic, a Obří hrad, který lze nalézt přibližně 5 km jihovýchodně od Kašperských Hor. Hojné středověké osídlení bylo zapříčiněno množstvím zlata, které se v Sušici na Otavě rýžovalo. 
+
+V polovině 13. století obsadil Sušicko Přemysl Otakar II. a z osady začal budovat královské město. Jan Lucemburský nechal v roce 1322 vybudovat městské hradby a potvrdil městu výsady královského města. Karel IV. utvrdil významnost města tím, že jej zařadil mezi města, jimž nesmí být zastavena nebo zcizena koruna. Sušice získala mílové právo a právo na vybírání mýtného. Běhěm husitských válek byla Sušice na straně husitů a měla velký podíl na dobytí Švihova. 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=12cm]{pics/susice.jpg}
+	\caption{Otava v Sušici s kaplí svatých Andělů Strážných v pozadí}
+	\label{obrazek:susice}
+\end{figure}
+
+Během 16. století začala Sušice ztrácet na své významnosti. Zádoby zlata byly téměř vyčerpány a během 50 let došlo k šesti velkým požárům města. Za vlády Ferdinanda I. navíc přišla Sušice z důvodu odepření pomoci o všechna svá privilegia a statky, navíc byla nucena odvádět dávky z piva a vína. Přesto měla Sušice velké příjmy z obchodu, neboť městem procházela Zlatá stezka, dříve nazývaná také jako "pasovská" či "solná". Vzhledem k této výhodné pozici si město vydobilo právo svobodného skladování soli. Během třicetileté války bylo město poničeno táhnoucími se vojsky a z důvodu rekatolizace se mnoho obyvatel rozhodlo odstěhovat. 
+
+Po třicetileté válce byla vybudována poutní kaple svatých Andělů Strážných. Ve 2. polovině 17. století postihla Sušici morová epidemie, kvůli které byl vybudován nový hřbitov a kaple svatého Rocha. Během národního obrození vzniklo v Sušici ochotnické divadlo a rozvíjela se výuka českého jazyka. V roce 1839 byla založena společnost SOLO na výrobu zápalek. V roce 1933 byl zřízen podnik PAP vyrábějící obaly. 
+
+V dnešní době se v Sušici nachází mnoho turisticky vyhledávaných míst. Na vrcholu hory Svatobor se nachází kamenná vyhlídková věž,  v Muzeu Šumavy Sušice lze nalézt jeden z největších mechanických betlémů v České republice a od roku 2014 byl v Sušici obnoven pivovar, který vaří pivo Sušičák. 
 
 
 \subsection{Žichovice}
+Na soutoku Nezdického potoka a Otavy se nachází malebná obec Žichovice. První písemnou zmínku lze nalézt z roku 1045, kdy Břetislav I. věnoval Žichovice břevnovskému klášteru. Ve 2. polovině 16. století koupil Žichovice Jan Kavka Říčanský z Říčan a nechal zde vybudovat renesanční tvrz. Tvrt byla kolem roku 1603 přestavěna Janem Libštejnským z Kolovrat na renesanční zámek. Od roku 1964 je zámek chráněn jako kulturní památka. \cite{zichovice}
+
+Žichovice se nachází zhruba 1 km od zříceniny Rabí. Hrad byl založen rodem Wittelsbachů již v první polovině 13. století. S hradem se pojí mnoho pověstí, z nichž nejznámější je zřejmě pověst týkající se Jana Žižky, který zde údajně přišel o své druhé oko. Dohadů o ztrátě oka je však mnoho. Mezi nejrozšířenější pověsti patří pověst o veliteli hradu Přibíku Kocovském, který z hradeb Rabí vystřelil šíp, kterým zasáhl právě oko Jana Žižky. Tento výjev byl poté zobrazen i na rabské bráně. Podle jiné pověsti se zabodl šíp do hrušně, pod níž Žižka stál, a tříska ze stromu mu vypíchla oko. Po mnoho let se v oblasti Rabí chovala tradice vysazování hrušní. \cite{rabi}
+
+Pro obec Žichovice měla Otava velký historický význam. V okolí se nachází stará rýžoviště zlata, je zde dlouhá vápenkářská tradice a bohatá historie voroplavby.
 
 \subsection{Horažďovice}
 
@@ -170,8 +183,10 @@ Otava protéká několika historicky významnými městy. Mezi nejvýznamnějš�
 
 \subsection{Písek}
 
-\section{Události na Otavě}
+\section{Významné události na Otavě (JAK TO NAZVAT?)}
 \subsection{Rýžování zlata}
+
+\subsection{Voroplavba}
 
 \subsection{Povodeň v roce 2002}
 
