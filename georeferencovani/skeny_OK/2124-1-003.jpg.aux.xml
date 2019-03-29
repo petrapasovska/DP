@@ -1,4 +1,5 @@
 <PAMDataset>
+  <SRS>PROJCS["S-JTSK_Krovak_East_North",GEOGCS["GCS_S_JTSK",DATUM["Jednotne_Trigonometricke_Site_Katastralni",SPHEROID["Bessel_1841",6377397.155,299.1528128]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]],PROJECTION["Krovak"],PARAMETER["False_Easting",0.0],PARAMETER["False_Northing",0.0],PARAMETER["Pseudo_Standard_Parallel_1",78.5],PARAMETER["Scale_Factor",0.9999],PARAMETER["Azimuth",30.28813975277778],PARAMETER["Longitude_Of_Center",24.83333333333333],PARAMETER["Latitude_Of_Center",49.5],PARAMETER["X_Scale",-1.0],PARAMETER["Y_Scale",1.0],PARAMETER["XY_Plane_Rotation",90.0],UNIT["Meter",1.0],AUTHORITY["EPSG","5514"]]</SRS>
   <Metadata domain="IMAGE_STRUCTURE">
     <MDI key="COMPRESSION">JPEG</MDI>
     <MDI key="INTERLEAVE">PIXEL</MDI>
@@ -37,8 +38,6 @@
         <Double>-5484.8689499674365</Double>
         <Double>1131.9625243314076</Double>
         <Double>-5637.7678202269599</Double>
-        <Double>574.44428339833394</Double>
-        <Double>-5454.0395265333354</Double>
         <Double>1891.0251774180215</Double>
         <Double>-622.47418274637312</Double>
         <Double>1906.1490380709292</Double>
@@ -157,6 +156,8 @@
         <Double>-5830.3374757803977</Double>
         <Double>506.623120952514</Double>
         <Double>-5859.0005536861718</Double>
+        <Double>574.83862192234062</Double>
+        <Double>-5453.4066684886275</Double>
       </SourceGCPs>
       <TargetGCPs xsi:type="typens:ArrayOfDouble">
         <Double>-801471.4411999993</Double>
@@ -173,8 +174,6 @@
         <Double>-1125225.5376033166</Double>
         <Double>-801435.51420765265</Double>
         <Double>-1125271.9720711859</Double>
-        <Double>-801569.96249738312</Double>
-        <Double>-1125208.1147559714</Double>
         <Double>-801080.83292537183</Double>
         <Double>-1124044.9247212538</Double>
         <Double>-801076.37137999036</Double>
@@ -293,6 +292,8 @@
         <Double>-1125240.3526707776</Double>
         <Double>-801608.01016416878</Double>
         <Double>-1125245.9871826074</Double>
+        <Double>-801579.62387519749</Double>
+        <Double>-1125169.7969791868</Double>
       </TargetGCPs>
     </GeodataXform>
   </Metadata>
