@@ -47,6 +47,12 @@
         <Double>-6475.0713412724435</Double>
         <Double>2426.222839653492</Double>
         <Double>-5297.1501065790653</Double>
+        <Double>2956.212033033371</Double>
+        <Double>-6491.2534213066101</Double>
+        <Double>1478.3627685457468</Double>
+        <Double>-3592.5445268601179</Double>
+        <Double>7924.1796697080135</Double>
+        <Double>-3495.9696053266525</Double>
       </SourceGCPs>
       <TargetGCPs xsi:type="typens:ArrayOfDouble">
         <Double>-803114.39186983358</Double>
@@ -71,6 +77,12 @@
         <Double>-1123902.8017408515</Double>
         <Double>-802796.81794205261</Double>
         <Double>-1123445.053137853</Double>
+        <Double>-802715.4123924356</Double>
+        <Double>-1123745.0716392861</Double>
+        <Double>-802970.21988121665</Double>
+        <Double>-1123003.1388012536</Double>
+        <Double>-801380.06425298844</Double>
+        <Double>-1123200.0884139037</Double>
       </TargetGCPs>
       <Name />
     </GeodataXform>

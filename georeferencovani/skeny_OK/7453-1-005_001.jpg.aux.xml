@@ -1,4 +1,5 @@
 <PAMDataset>
+  <SRS>PROJCS["S-JTSK_Krovak_East_North",GEOGCS["GCS_S_JTSK",DATUM["Jednotne_Trigonometricke_Site_Katastralni",SPHEROID["Bessel_1841",6377397.155,299.1528128]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]],PROJECTION["Krovak"],PARAMETER["False_Easting",0.0],PARAMETER["False_Northing",0.0],PARAMETER["Pseudo_Standard_Parallel_1",78.5],PARAMETER["Scale_Factor",0.9999],PARAMETER["Azimuth",30.28813975277778],PARAMETER["Longitude_Of_Center",24.83333333333333],PARAMETER["Latitude_Of_Center",49.5],PARAMETER["X_Scale",-1.0],PARAMETER["Y_Scale",1.0],PARAMETER["XY_Plane_Rotation",90.0],UNIT["Meter",1.0],AUTHORITY["EPSG","5514"]]</SRS>
   <Metadata domain="IMAGE_STRUCTURE">
     <MDI key="COMPRESSION">JPEG</MDI>
     <MDI key="INTERLEAVE">PIXEL</MDI>
@@ -6,7 +7,7 @@
   </Metadata>
   <Metadata domain="xml:ESRI" format="xml">
     <GeodataXform xsi:type="typens:PolynomialXform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:typens="http://www.esri.com/schemas/ArcGIS/10.6">
-      <PolynomialOrder>3</PolynomialOrder>
+      <PolynomialOrder>2</PolynomialOrder>
       <SpatialReference xsi:type="typens:ProjectedCoordinateSystem">
         <WKT>PROJCS["S-JTSK_Krovak_East_North",GEOGCS["GCS_S_JTSK",DATUM["D_S_JTSK",SPHEROID["Bessel_1841",6377397.155,299.1528128]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]],PROJECTION["Krovak"],PARAMETER["False_Easting",0.0],PARAMETER["False_Northing",0.0],PARAMETER["Pseudo_Standard_Parallel_1",78.5],PARAMETER["Scale_Factor",0.9999],PARAMETER["Azimuth",30.28813975277778],PARAMETER["Longitude_Of_Center",24.83333333333333],PARAMETER["Latitude_Of_Center",49.5],PARAMETER["X_Scale",-1.0],PARAMETER["Y_Scale",1.0],PARAMETER["XY_Plane_Rotation",90.0],UNIT["Meter",1.0],AUTHORITY["EPSG",5514]]</WKT>
         <XOrigin>-33699800</XOrigin>
@@ -98,6 +99,18 @@
         <Double>-814.80900573730469</Double>
         <Double>954.31163787841797</Double>
         <Double>-832.69154357910156</Double>
+        <Double>363.90284729003906</Double>
+        <Double>-203.88636779785156</Double>
+        <Double>315.79133605957031</Double>
+        <Double>-203.52360534667969</Double>
+        <Double>358.76676177978516</Double>
+        <Double>-260.05575561523438</Double>
+        <Double>4669.7676613554358</Double>
+        <Double>-3573.7205223739147</Double>
+        <Double>4694.7293770611286</Double>
+        <Double>-3470.0583717525005</Double>
+        <Double>4600.5135378614068</Double>
+        <Double>-3684.4758526682854</Double>
       </SourceGCPs>
       <TargetGCPs xsi:type="typens:ArrayOfDouble">
         <Double>-802238.42190000042</Double>
@@ -174,6 +187,18 @@
         <Double>-1123924.9108547661</Double>
         <Double>-802577.47953464068</Double>
         <Double>-1123930.3126544696</Double>
+        <Double>-802703.51052835421</Double>
+        <Double>-1123741.133969951</Double>
+        <Double>-802713.72346544662</Double>
+        <Double>-1123740.8693860886</Double>
+        <Double>-802705.57428248168</Double>
+        <Double>-1123758.1202539236</Double>
+        <Double>-801748.36278472585</Double>
+        <Double>-1124747.2670238835</Double>
+        <Double>-801738.73193213076</Double>
+        <Double>-1124722.0786401734</Double>
+        <Double>-801766.98948864592</Double>
+        <Double>-1124771.8204063238</Double>
       </TargetGCPs>
       <Name />
     </GeodataXform>
