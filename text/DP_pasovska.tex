@@ -40,7 +40,7 @@
 \authorFN{Pasovská} %příjmení autora
 \authorWithDegrees{Bc. Petra Pasovská} %jméno autora včetně současných akademických titulů
 \supervisor{Ing. Tomáš Janata, Ph.D.}
-\acknowledgements{Děkuji Ing. Tomáši Janatovi, Ph.D., za odborné vedení práce a cenné rady, které mi pomohly tuto práci zkompletovat. Velké díky také patří mé rodině a přátelům, kteří mi byli po dobu zpracování velkou oporou. Ráda bych také poděkovala panu Ladislavu Hollovi, který mi velmi pomohl se sběrem historických fotografií použitých v této práci a pracovníkům Stavebního úřadu ve Strakonicích za zapůjčení stavebních plánů Strakonického hradu.}
+\acknowledgements{Děkuji Ing. Tomáši Janatovi, Ph.D., za odborné vedení práce a cenné rady, které mi pomohly tuto práci zkompletovat. Velké díky také patří mé rodině a přátelům, kteří mi byli po dobu zpracování velkou oporou. Ráda bych také poděkovala panu Ladislavu Höllovi, který mi velmi pomohl se sběrem historických fotografií použitých v této práci a pracovníkům Stavebního úřadu ve Strakonicích za zapůjčení stavebních plánů Strakonického hradu.}
 \abstractCS{Cílem této práce je vizualizace údolí řeky Otavy ve vybraném zájmovém území. Podstatou práce je zpracování kartografických podkladů pro různé časové hladiny. Výsledné zpracování dat je doplněno o generalizovaný 3D model Strakonického hradu. Součástí práce je také sběr historických fotografií zachycujících řeku Otavu a jejich porovnání se současným stavem. Okolí řeky je následně doplněno o objekty vytvořené konceptuálním modelováním v programu CityEngine. Na základě zpracování kartografických podkladů je  možné porovnat změnu využití půdy a říčního koryta. (tady to ještě poupravit ten konec, nějak pěkně vymyslet účel práce) }
 \abstractEN{The aim of this work is visualize the Otava River valley in the selected area of interest. The essence of this thesis is the processing of cartographic materials for various time periods. The result is complemented by a generalized 3D model of Strakonice Castle. The thesis also includes the collection of historical photographs depicting the Otava River and their comparison with the current state. The surroundings of the river are then supplemented with objects created by conceptual modeling in the CityEngine program. }
 \placeForDeclarationOfAuthenticity{V~Praze}
@@ -70,6 +70,29 @@ Diplomová práce je rozdělena na čtyři hlavní části. Začátek práce pos
 \end{introduction}
 
 \chapter{Rešerše literatury}
+Tato práce se zaměřuje na tři hlavní témata - hydrologii, kartografii a modelování. Všechna témata jsou v dnešní době aktuální a existuje k nim mnoho publikací.
+
+Knih o hydrologii byla publikována celá řada. Vzhledem k tomu, že na mnoha vysokých školách je hydrologie vyučována, vycházela jsem v této práci především ze studijních materiálů, a to zejména ze studijních materiálů VŠCHT a Univerzity Karlovy. Pro výklad termínů vztahujícím se k řekám byl použit Meteorologický slovník \cite{meteo} vytvořený Českou meteorologickou společností (ČMeS), který je dostupný na internetu zdarma. Některé definice byly čerpány také z knihy Ladislava Slavíka a Martina Nerudy Voda v krajině \cite{definiceHydro}. 
+
+Pro zhodnocení řeky jako takové nejvíce posloužila kniha Základy fyzické geografie \cite{FGkniha}. Hydrologickou analýzou se ve velké míře zabývají na již zmíněné Univerzitě Karlově, kde byl vytvořen návod na cvičení od Miroslava Šobra \cite{UK}. Významnou publikací je také studijní materiál Hydrologie a hydropedologie od autorek Dany Pokorné a Jany Zábranské \cite{hydrovscht}. 
+
+Kartografií zabývající se publikace jsou opět převážně studijní materiály. Pro vizualizaci zájmové oblasti byly využity Císařské povinné otisky stabilního katastru. O vzniku a vlastnostech (detailech?) těchto map se lze dočíst v publikaci od Růženy Zimové a Bohuslava Veverky Topografická a tematická kartografie \cite{topo_skripta}. Tématu mapování se také věnuje profesor František Hromádka, který s kolektivem autorů publikoval učební text Mapování \cite{mapovani_brno}.
+
+Zmíněné historické podklady bylo nutné zgeoreferencovat. Popis transformací a zpracování historických děl je kvalitně obsaženo v díle Jiřího Cajthamla Analýza starých map v digitálním prostředí na příkladu Műllerových map Čech a Moravy\cite{transformace}. Autor se v tomto díle mimo transformace věnuje také popisu starých map našeho území a prezentaci vytvořených digitálních map.
+
+Pro vizualizaci okolí řeky Otavy byly vytvářeny dílčí tematické mapy. Při tvorbě map je nutné dodržet stanovená kartografická pravidla. V této práci byla hlavním literárním zdrojem těchto pravidel díla od Růženy Zimové a Bohuslava Veverky Topografická a tematická kartografie \cite{topo_skripta}, učební text od Jaroslava Hybáška Topografická a tematická kartografie - učební texty \cite{tematicka_brno}, publikace Vybrané okruhy geografické kartografie od Jana D. Bláhy \cite{kartoblaha} a kniha Metody tematické kartografie - Vizualizace prostorových jevů od Víta Voženílka \cite{mapyolomouc}.
+
+V rámci práce byly zkoumány možnosti 3D modelování objektů. Tomuto tématu se věnují především práce publikované v zahraničí, nejčastěji odborné články. Za zmínku jistě stojí článek publikovaný v časopise Minjiangské univerzity v roce 2016 \cite{cina}. Autoři v tomto článku popisují využití 3D modelování v územním plánování vytvořené v prostředí GIS ve městě Fuzhou. Na téma 3D modelování v prostředí GIS vyšel také článek v časopise International Journal of Risk Assessment and Management \cite{clanek_flood}. Autoři v tomto článku analyzovali, vizualizovali a simulovali povodňová rizika poblíž řeky Qu'Appelle v jižním Saskatchewanu. 
+
+Na téma 3D modelování existuje mnoho zahraničních knih. Převážně se však týkají modelování z architektonického hlediska, zde jistě stojí za zmínku kniha Google SketchUp Workshop \cite{sketchup}, která podrobně popisuje tvorbu modelů v programu SketchUp. Modelování terénu se ve své publikaci Visualization of Digital Terrain and Landscape Data věnuje Rűdiger Mach a Peter Petschek \cite{vizteren}. 
+
+Na téma modelování terénu v prostředí ArcGIS vypracovala diplomovou práci Adina Slívová \cite{adina}. Ta v rámci své práce vytvářela model historického údolí Vltavy v oblasti přehradní nádrže Slapy. 
+
+
+
+
+
+
 
 
 
@@ -331,7 +354,7 @@ Katastrální mapa je státní mapové dílo vydávané Českým úřadem zeměm
 
 
 \section{Fotodokumentace}
-Součástí této práce je také vyhledání historických fotografií a jejich případné porovnání se současným stavem. Z historických fotografií byly použity fotografie poskytnuté panem Ladislavem Hollem, 
+Součástí této práce je také vyhledání historických fotografií a jejich případné porovnání se současným stavem. Z historických fotografií byly použity fotografie ze sbírky Ladislava Hölla. Dále byly vyhledány fotografie na webových stránkách a 
 
 \chapter{Příprava dat}
 
