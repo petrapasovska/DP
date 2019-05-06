@@ -1,0 +1,81 @@
+<PAMDataset>
+  <Metadata domain="IMAGE_STRUCTURE">
+    <MDI key="COMPRESSION">JPEG</MDI>
+    <MDI key="INTERLEAVE">PIXEL</MDI>
+    <MDI key="SOURCE_COLOR_SPACE">YCbCr</MDI>
+  </Metadata>
+  <Metadata domain="xml:ESRI" format="xml">
+    <GeodataXform xsi:type="typens:PolynomialXform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:typens="http://www.esri.com/schemas/ArcGIS/10.6">
+      <PolynomialOrder>1</PolynomialOrder>
+      <SpatialReference xsi:type="typens:ProjectedCoordinateSystem">
+        <WKT>PROJCS["S-JTSK_Krovak_East_North",GEOGCS["GCS_S_JTSK",DATUM["D_S_JTSK",SPHEROID["Bessel_1841",6377397.155,299.1528128]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]],PROJECTION["Krovak"],PARAMETER["False_Easting",0.0],PARAMETER["False_Northing",0.0],PARAMETER["Pseudo_Standard_Parallel_1",78.5],PARAMETER["Scale_Factor",0.9999],PARAMETER["Azimuth",30.28813975277778],PARAMETER["Longitude_Of_Center",24.83333333333333],PARAMETER["Latitude_Of_Center",49.5],PARAMETER["X_Scale",-1.0],PARAMETER["Y_Scale",1.0],PARAMETER["XY_Plane_Rotation",90.0],UNIT["Meter",1.0],AUTHORITY["EPSG",5514]]</WKT>
+        <XOrigin>-37069593.709789924</XOrigin>
+        <YOrigin>-37066291.396543078</YOrigin>
+        <XYScale>121490396.21605329</XYScale>
+        <ZOrigin>-100000</ZOrigin>
+        <ZScale>10000</ZScale>
+        <MOrigin>-100000</MOrigin>
+        <MScale>10000</MScale>
+        <XYTolerance>0.001</XYTolerance>
+        <ZTolerance>0.001</ZTolerance>
+        <MTolerance>0.001</MTolerance>
+        <HighPrecision>true</HighPrecision>
+        <WKID>102067</WKID>
+        <LatestWKID>5514</LatestWKID>
+      </SpatialReference>
+      <SourceGCPs xsi:type="typens:ArrayOfDouble">
+        <Double>5674.035682216444</Double>
+        <Double>-3115.5774119493917</Double>
+        <Double>5983.9533053229097</Double>
+        <Double>-2778.2222064100206</Double>
+        <Double>3576.5160064928568</Double>
+        <Double>-4192.6456913072616</Double>
+        <Double>3148.1036154129688</Double>
+        <Double>-5254.0604526414536</Double>
+        <Double>1247.6545223040739</Double>
+        <Double>-4430.6584604089148</Double>
+        <Double>1572.9969069004796</Double>
+        <Double>-1735.4631975023076</Double>
+        <Double>1992.6809437796874</Double>
+        <Double>-2218.9109849804081</Double>
+        <Double>2205.6989750593539</Double>
+        <Double>-2319.3282978832722</Double>
+        <Double>4017.8116907626459</Double>
+        <Double>-3068.1529358574189</Double>
+        <Double>5694.5418069404441</Double>
+        <Double>-3224.0151390274987</Double>
+        <Double>6260.662972481904</Double>
+        <Double>-1577.6889953794889</Double>
+        <Double>2462.1854227294502</Double>
+        <Double>-740.44260249938816</Double>
+      </SourceGCPs>
+      <TargetGCPs xsi:type="typens:ArrayOfDouble">
+        <Double>-792884.25793577638</Double>
+        <Double>-1129075.8917769627</Double>
+        <Double>-792751.45888545504</Double>
+        <Double>-1128935.3316000085</Double>
+        <Double>-793772.21901725745</Double>
+        <Double>-1129531.8756056011</Double>
+        <Double>-793952.66521148384</Double>
+        <Double>-1129987.4890168293</Double>
+        <Double>-794757.19859138655</Double>
+        <Double>-1129637.3784207734</Double>
+        <Double>-794615.97695477586</Double>
+        <Double>-1128496.6912435624</Double>
+        <Double>-794443.33598449361</Double>
+        <Double>-1128698.4364387202</Double>
+        <Double>-794351.3930922742</Double>
+        <Double>-1128737.7932882675</Double>
+        <Double>-793588.73010861245</Double>
+        <Double>-1129061.577790004</Double>
+        <Double>-792874.48597178888</Double>
+        <Double>-1129122.4320783792</Double>
+        <Double>-792635.56674394989</Double>
+        <Double>-1128428.9577747618</Double>
+        <Double>-794242.38454092341</Double>
+        <Double>-1128074.1508151467</Double>
+      </TargetGCPs>
+      <Name />
+    </GeodataXform>
+  </Metadata>
+</PAMDataset>
