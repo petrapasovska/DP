@@ -382,12 +382,128 @@ Kromě fotografií bylo využito i historických pohlednic zachycujících Otavu
 \section{Data pro tvorbu dílčích tematických map}
 
 
-\chapter{Transformace}
+\chapter{Rovinné transformace}
 V rámci práce byla potřebná důkladná znalost transformace, která byla využita při georeferencování mapových podkladů. Transformací lze označit proces, při němž dochází k přechodu z jedné soustavy do druhé. Pro každý druh transformace je požadované odlišné množství vlícovacích bodů, tedy takových bodů,  jejichž souřadnice jsou známy a jejichž poloha lze jednoznačně identifikovat v obou soustavách.
 
 Při výpočtu transformací je hlavním cílem výpočet transformačního klíče. Transformační klíč umožňuje převod souřadnic z jedné soustavy do druhé a obsahuje v sobě hodnotu posunu počátků souřadnicových systémů, stočení souřadnicových os a změnu měřítka. K jeho určení je potřebná znalost nutného či nadbytečného počtu identických bodů. 
 
-V této kapitole se vycházelo zejména z díla Jiřího Cajthamla \textit{Analýza starých map v digitálním prostředí na příkladu Műllerových map Čech a Moravy}, ze studijního materiálu od Zdeňka Skořepy \textit{Geodézie 4} a z nápovědy k programu ArcGIS. V rámci aplikace ArcMap je možné při georeferencování zvolit transformaci polynomickou, křivkovou, vyrovnávací či projektivní. V této kapitole budou tyto typy transformací stručně popsány. \cite{transformace} \cite{skorepa} \cite{gis_transformace} \cite{vugtk}
+V této kapitole se vycházelo zejména z díla Jiřího Cajthamla \textit{Analýza starých map v digitálním prostředí na příkladu Műllerových map Čech a Moravy}, ze studijního materiálu od Zdeňka Skořepy \textit{Geodézie 4} a z nápovědy k programu ArcGIS. V rámci aplikace ArcMap je možné při georeferencování zvolit transformaci podobnostní, polynomickou, křivkovou, vyrovnávací či projektivní. V této kapitole budou tyto typy transformací stručně popsány. \cite{transformace} \cite{skorepa} \cite{gis_transformace} \cite{vugtk}
+
+\
+
+Transformace lze nejjednodušeji zapsat rovnicí \eqref{zaklad_tr}, kde neznámé \textit{x', y'} vyjadřují souřadnice v cílové soustavě a \textit{x, y} souřadnice v počáteční soustavě. Matici \textit{P} lze následně rozepsat do výrazu \eqref{zaklad_tr2}, v níž neznámá T označuje posunutí (translaci), R značí rotaci a M měřítko.
+
+\begin{align}\label{zaklad_tr}
+x' = P \cdot x
+\end{align}
+
+\begin{align}\label{zaklad_tr2}
+x' = T \cdot R \cdot M \cdot x
+\end{align}
+
+Posunutí vyjadřuje vzájemné posunutí počátku souřadnicových soustav a lze maticově zapsat:
+
+\begin{align} \label{matT}
+T (X_t, Y_t) = \begin{pmatrix}
+    1 & 0 & X_t \\
+    0 & 1 & Y_t \\
+    0 & 0 & 1 
+\end{pmatrix}
+\end{align}
+
+Rotace udává otočení bodu kolem středu vztažné soustavy o daný úhel proti směru hodinových ručiček. Obecně lze matici rotace zapsat:
+
+\begin{align} \label{matR}
+R (\omega_x, \omega_y) = \begin{pmatrix}
+    cos(\omega_x) & -sin(\omega_y) & 0 \\
+    sin(\omega_x) & cos(\omega_y) & 0 \\
+    0 & 0 & 1 
+\end{pmatrix}
+\end{align}
+
+Měřítko udává poměr vzdálenosti dvou identických bodů. Pokud je absolutní hodnota měřítka v intervalu (0,1), dochází ke zmenšení. V případě, že absolutní hodnota měřítka je větší než 1, dochází naopak ke zvětšení. Pro hodnotu měřítka rovnu 1 dochází ke shodnostní transformaci a dochází pouze k posunutí a rotaci. Matice vyjadřující měřítko má tvar:
+
+\begin{align} \label{matM}
+T (X_t, Y_t) = \begin{pmatrix}
+    m_x & 0 & 0 \\
+    0 & m_y & 0 \\
+    0 & 0 & 1 
+\end{pmatrix}
+\end{align}
+
+Po seskládání dílčích matic do rovnice \eqref{zaklad_tr2} a roznásobením těchto matic, vzniká obecný předpis pro rovinné transformace:
+
+\begin{align}  \label{obec-transf} 
+\begin{split}
+x' &= m_x cos(\omega_x) x - m_y cos(\omega_y) y + X_t  \\
+y' &= m_x sin(\omega_x) x + m_y cos(\omega_y) y + Y_t 
+\end{split}
+\end{align}
+
+Při nadbytečném množství identických bodů dochází k vyrovnání metodou nejmenších čtverců. Určované hodnoty (\textit{x}) jsou počítány z přírůstků (\textit{dx}) přibližných hodnot (\textit{$x_0$}). Funkční vztah mezi měřenými veličinami (\textit{l}) a jejich opravami (\textit{v}) lze zapsat vztahem \eqref{vztah}. 
+
+\begin{align}\label{vztah}
+F(x) = l + v
+\end{align}
+
+Pro výpočet vyrovnání je funkční vztah zapsán Taylorovou řadou, přičemž členy 2. a vyšších řádů jsou zanedbány. Výraz \eqref{vztah} lze tedy zapsat v podobě \eqref{taylor}.
+
+\begin{align}\label{taylor}
+F(x_0) = \frac{\partial F(x))}{\partial x} \Bigr\rvert_{x = x_0} \cdot dx = l + v
+\end{align}
+
+Matice parciálních derivací funkčních vztahů bývá označována jako matice plánu a značí se \textit{A}. Rozdíl funkčního vztahu a vektoru měřených veličin lze pro následné výpočty označit \textit{l'}. Linearizované rovnice oprav mají podobu:
+
+\begin{align}\label{opravy}
+v = A \cdot dx + l'
+\end{align}
+
+Vyrovnané neznámé jsou následně vypočteny vztahem:
+
+\begin{align}\label{mnc}
+x = (A^TA)^{-1}(A^Tl)
+\end{align}
+
+Při výpočtu transformací s vyrovnáním je možné použít i váhovou matici. Prakticky by měla smysl například v případě georeferencování starších kartografických děl, u nichž by byly voleny různorodé vlícovací body. U bodů, u nichž je předpokládaná určitá stabilita a jednoznačnost (půdorysy kostelů atd.), by byla při výpočtu volena vyšší váha, než u identických bodů znázorňujících křížení cest. 
+
+
+
+\section{Podobnostní transformace}
+Podobnostní transformace má nejčastější využití v geodézii. Při podobnostní transformaci dochází k posunu, rotaci (stejné v obou osách) a změně měřítka (stejné v obou osách). Transformace je konformní a zachovává rovnoběžnost. Aby bylo možné transformaci vypočítat, je potřebná znalost minimálně 2 identických bodů. 
+
+Základní rovnice transformace má tvar:
+
+\begin{align} \label{podob}
+\begin{pmatrix}
+x'\\ 
+y'
+\end{pmatrix} = 
+\begin{pmatrix}
+X_t\\ 
+Y_t
+\end{pmatrix} +
+m\cdot \begin{pmatrix}
+cos\omega  & -sin\omega\\ 
+sin\omega & cos\omega
+\end{pmatrix}\cdot 
+\begin{pmatrix}
+x\\ 
+y
+\end{pmatrix}
+\end{align}
+
+Parametr stočení není v lineárním vztahu, nabízí se zde tedy substituce, která umožní následné transformační vztahy linearizovat.
+
+\begin{align}  \label{podobn} 
+\begin{split}
+a &= m \cdot cos(\omega) \\
+b &= m \cdot sin(\omega) 
+\end{split}
+\end{align}
+
+
+DOPSAT
+
 
 
 
@@ -416,7 +532,7 @@ y' &= m_x sin(\omega_x) x + m_y cos(\omega_y) y + Y_t
 \end{split}
 \end{align}
 
-Do výpočtu vstupuje 6 neznámých. Z toho důvodu, že tyto neznámé nejsou v lineárním vztahu, je vhodné provést substituci \eqref{substituce}.
+Do výpočtu vstupuje 6 neznámých, a to měřítkový koeficient ve směru osy x (\textit{$m_x$}), měřítkový koeficient ve směru osy y (\textit{$m_y$}), posun ve směru osy x (\textit{$X_t$}), posun ve směru osy y (\textit{$Y_t$}), úhel otočení osy x (\textit{$\omega_x$}) a úhel otočení osy y (\textit{$\omega_y$}). Z toho důvodu, že tyto neznámé nejsou v lineárním vztahu, je vhodné provést substituci \eqref{substituce}.
 
 \begin{align}  \label{substituce} 
 \begin{split}
@@ -479,6 +595,93 @@ m_y &= \sqrt{b^2 + d^2} \\
 \end{align}
 
 \subsection{Polynomická transformace vyššího řádu}
+Polynomické transformace vyšších řádů jsou používány u takových rastrů, u kterých dochází k většímu zkreslení. Tyto transformace upravují nejen polohu, rotaci a velikost snímku, ale jsou schopny rastr i určitým způsobem ohnout či zkroutit. Polynomické transformace vyšších řádů nejsou konformní a převádí přímky na křivky, tudíž je nutné brát velký zřetel na rozmístění vlícovacích bodů. Pokud je zvoleno větší množství bodů, než je minimální nutný počet, dochází při transformaci k vyrovnání metodou nejmenších čtverců. 
+
+Pro polynomickou transformaci 2. stupně je nutná znalost alespoň 6 bodů. Rovnice pro výpočet této transformace vypadá následovně:
+
+\begin{align} \label{poly_2}
+\begin{split}
+x' &= ax^2 + by^2 + cxy + dx + ey + f \\
+y' &= gx^2 + hy^2 + ixy +jx + ky +l 
+\end{split}
+\end{align}
+
+Do těchto rovnic vstupuje celkem 12 neznámých. Tyto neznámé jsou v lineárním vztahu, je tedy možné přejít k výpočtu vyrovnání. Vektor neznámých lze zapsat:
+
+\begin{align} \label{poly2_x}
+x = (a \hdots l)^T
+\end{align}
+
+Matice plánu má následující tvar:
+
+\setcounter{MaxMatrixCols}{20}
+\begin{align} \label{poly_2_A}
+A = \begin{pmatrix}
+ x_1^2 & y_1^2 &  x_1y_1 & x_1 & y_1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+ \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots  \\
+    x_n^2 & y_n^2 & x_ny_n & x_n & y_n & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & x_1^2 & y_1^2 & x_1y_1 & x_1 & y_1 & 1 \\
+     \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots  \\
+    0 & 0 & 0 & 0 & 0 & 0 & x_n^2 & y_n^2 & x_ny_n & x_n & y_n & 1 \\
+\end{pmatrix}
+\end{align}
+
+
+Vektor měření l lze následně zapsat:
+
+\begin{align} \label{poly2_l}
+l = (x_1', \ldots , x_n', y_1', \ldots , y_n')^T
+\end{align}
+
+Vyrovnané neznámé jsou následně získány z rovnice \eqref{aff_res}. Výpočet koeficientů lze zjednodušit rozdělením matice plánu A. Ta má po zjednodušení tvar:
+
+\begin{align} \label{poly2A_zjednodusena}
+A = \begin{pmatrix}
+ x_1^2 & y_1^2 &  x_1y_1 & x_1 & y_1 & 1  \\ 
+ \vdots & \vdots & \vdots & \vdots & \vdots & \vdots   \\
+    x_n^2 & y_n^2 & x_ny_n & x_n & y_n & 1  \\
+\end{pmatrix}
+\end{align}
+
+Matice neznámých jsou dvě, a to:
+
+\begin{align} \label{poly2_x12}
+\begin{split}
+x_1 &= (a\ b\ c\ d\ e\ f)^T  \\
+x_2 &= (g\ h\ i\ j\ k\ l)^T
+\end{split}
+\end{align}
+
+Odpovídající vektory měření jsou následně ve tvaru:
+
+\begin{align} \label{poly2_l12}
+\begin{split}
+l_1 &= (x_1', \ldots , x_n')^T  \\
+l_2 &= ( y_1', \ldots , y_n')^T
+\end{split}
+\end{align}
+
+Následný výpočet probíhá dle vzorce \eqref{aff_res}. Stejný výpočet lze aplikovat i pro polynomické transformace vyšších řádů. Z toho důvodu, že v programu ArcMap je možnost volby i polynomické transformace 3. stupně, je zde uveden její tvar:
+
+
+\begin{align} \label{poly_3}
+\begin{split}
+x' &= ax^3 + by^3 + cx^2y + dxy^2 + ex^2 + fy^2 + gxy + hx + iy + j \\
+y' &= kx^3 + ly^3 + mx^2y + nxy^2 + ox^2 + py^2 + qxy + rx + sy + t  
+\end{split}
+\end{align}
+
+Při použití této transformace je minimální počet vlícovacích bodů 10. 
+
+
+
+\section{Projektivní transformace}
+
+
+
+
+
+
 
 
 
