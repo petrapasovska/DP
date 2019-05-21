@@ -383,11 +383,11 @@ Kromě fotografií bylo využito i historických pohlednic zachycujících Otavu
 
 
 \chapter{Rovinné transformace}
-V rámci práce byla potřebná důkladná znalost transformace, která byla využita při georeferencování mapových podkladů. Transformací lze označit proces, při němž dochází k přechodu z jedné soustavy do druhé. Pro každý druh transformace je požadované odlišné množství vlícovacích bodů, tedy takových bodů,  jejichž souřadnice jsou známy a jejichž poloha lze jednoznačně identifikovat v obou soustavách.
+V rámci práce byla potřebná důkladná znalost transformace, která byla využita při georeferencování mapových podkladů. Transformací lze označit proces, při němž dochází k přechodu z jedné soustavy do druhé. Pro každý druh transformace je požadované odlišné množství vlícovacích bodů, tedy takových bodů,  jejichž souřadnice jsou známy a jejichž poloha lze jednoznačně identifikovat v~obou soustavách.
 
 Při výpočtu transformací je hlavním cílem výpočet transformačního klíče. Transformační klíč umožňuje převod souřadnic z jedné soustavy do druhé a obsahuje v sobě hodnotu posunu počátků souřadnicových systémů, stočení souřadnicových os a změnu měřítka. K jeho určení je potřebná znalost nutného či nadbytečného počtu identických bodů. 
 
-V této kapitole se vycházelo zejména z díla Jiřího Cajthamla \textit{Analýza starých map v digitálním prostředí na příkladu Műllerových map Čech a Moravy}, ze studijního materiálu od Zdeňka Skořepy \textit{Geodézie 4} a z nápovědy k programu ArcGIS. V rámci aplikace ArcMap je možné při georeferencování zvolit transformaci podobnostní, polynomickou, křivkovou, vyrovnávací či projektivní. V této kapitole budou tyto typy transformací stručně popsány. \cite{transformace} \cite{skorepa} \cite{gis_transformace} \cite{vugtk}
+V této kapitole se vycházelo zejména z díla Jiřího Cajthamla \textit{Analýza starých map v digitálním prostředí na příkladu Műllerových map Čech a Moravy}, ze studijního materiálu od Zdeňka Skořepy \textit{Geodézie 4}, z bakalářské práce Jany Malimánkové \textit{Tvorba datového modelu Crigingerovy mapy v ArcGIS} a~z~nápovědy k programu ArcGIS. V rámci aplikace ArcMap je možné při georeferencování zvolit transformaci podobnostní, polynomickou, křivkovou, vyrovnávací či projektivní. V této kapitole budou tyto typy transformací stručně popsány. \cite{transformace} \cite{skorepa} \cite{gis_transformace} \cite{vugtk} \cite{malimankova}
 
 \
 
@@ -401,7 +401,7 @@ x' = P \cdot x
 x' = T \cdot R \cdot M \cdot x
 \end{align}
 
-Posunutí vyjadřuje vzájemné posunutí počátku souřadnicových soustav a lze maticově zapsat:
+Posunutí vyjadřuje vzájemné posunutí počátku souřadnicových soustav a~lze maticově zapsat:
 
 \begin{align} \label{matT}
 T (X_t, Y_t) = \begin{pmatrix}
@@ -421,7 +421,7 @@ R (\omega_x, \omega_y) = \begin{pmatrix}
 \end{pmatrix}
 \end{align}
 
-Měřítko udává poměr vzdálenosti dvou identických bodů. Pokud je absolutní hodnota měřítka v intervalu (0,1), dochází ke zmenšení. V případě, že absolutní hodnota měřítka je větší než 1, dochází naopak ke zvětšení. Pro hodnotu měřítka rovnu 1 dochází ke shodnostní transformaci a dochází pouze k posunutí a rotaci. Matice vyjadřující měřítko má tvar:
+Měřítko udává poměr vzdálenosti dvou identických bodů. Pokud je absolutní hodnota měřítka v intervalu (0,1), dochází ke zmenšení. V případě, že~absolutní hodnota měřítka je větší než 1, dochází naopak ke zvětšení. Pro~hodnotu měřítka rovnu 1 dochází ke shodnostní transformaci a uskuteční se pouze posunutí a rotace. Matice vyjadřující měřítko má tvar:
 
 \begin{align} \label{matM}
 T (X_t, Y_t) = \begin{pmatrix}
@@ -502,8 +502,23 @@ b &= m \cdot sin(\omega)
 \end{align}
 
 
-DOPSAT
+Po dosazení a roznásobení matic mají transformační rovnice podobu:
 
+ \begin{align}  \label{podobn_sub} 
+\begin{split}
+x' &= ax - by + X_t \\
+y' &= bx + ay + Y_t
+\end{split}
+\end{align}
+
+Následně se pracuje již s neznámými \textit{a, b, $X_t, Y_t$}. Po aplikaci vyrovnání jsou k dispozici vyrovnané hodnoty těchto veličin. Na závěr je provedena zpětná substituce, při níž jsou získány parametry transformačního klíče.
+
+ \begin{align}  \label{podobn_sub} 
+\begin{split}
+m &= \sqrt{a^2 + b^2} \\
+\omega &= arctg(\frac{b}{a})
+\end{split}
+\end{align}
 
 
 
@@ -595,7 +610,7 @@ m_y &= \sqrt{b^2 + d^2} \\
 \end{align}
 
 \subsection{Polynomická transformace vyššího řádu}
-Polynomické transformace vyšších řádů jsou používány u takových rastrů, u kterých dochází k většímu zkreslení. Tyto transformace upravují nejen polohu, rotaci a velikost snímku, ale jsou schopny rastr i určitým způsobem ohnout či zkroutit. Polynomické transformace vyšších řádů nejsou konformní a převádí přímky na křivky, tudíž je nutné brát velký zřetel na rozmístění vlícovacích bodů. Pokud je zvoleno větší množství bodů, než je minimální nutný počet, dochází při transformaci k vyrovnání metodou nejmenších čtverců. 
+Polynomické transformace vyšších řádů jsou používány u takových rastrů, u~kterých dochází k většímu zkreslení. Tyto transformace upravují nejen polohu, rotaci a velikost snímku, ale jsou schopny rastr i určitým způsobem ohnout či zkroutit. Polynomické transformace vyšších řádů nejsou konformní a převádí přímky na křivky, tudíž je nutné brát velký zřetel na rozmístění vlícovacích bodů. Pokud je zvoleno větší množství bodů, než je minimální nutný počet, dochází při transformaci k vyrovnání metodou nejmenších čtverců. 
 
 Pro polynomickou transformaci 2. stupně je nutná znalost alespoň 6 bodů. Rovnice pro výpočet této transformace vypadá následovně:
 
@@ -676,15 +691,51 @@ Při použití této transformace je minimální počet vlícovacích bodů 10.
 
 
 \section{Projektivní transformace}
+Projektivní transformace, nazývaná též kolineární, je vhodným kandidátem pro georeferencování při znalosti souřadnic rohů mapového listu. Pro výpočet je potřebná znalosti 4 identických bodů. Při větším množství již dochází k~vyrovnání. Projektivní transformace je často využívána ve fotogrammetrii. Transformace není konformní, ani nezachovává rovnoběžnost přímek. Jedním ze základů projektivní transformace je Pappova věta\footnote{Pokud body $P_1$ až $P_6$ leží střídavě a dvou přímkách \textit{g} a \textit{h}, budou i body $P_7$ až $P_9$ ležet na jedné přímce.} (obrázek č. \ref{obrazek:pap}, zdroj~\cite{pappova}).
+\newpage
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=10cm]{pics/papova_veta.png}
+	\caption{Pappova věta}
+	\label{obrazek:pap}
+\end{figure}
 
 
+Obecně lze transformaci pomocí matic zapsat:
+
+\begin{align} \label{proj_obec}
+\begin{pmatrix}
+x'\\ 
+y'\\ 
+1
+\end{pmatrix} = 
+\begin{pmatrix}
+a & b & c\\ 
+d & e & f\\ 
+g & h & 1
+\end{pmatrix} 
+\begin{pmatrix}
+x\\ 
+y\\ 
+1
+\end{pmatrix}
+\end{align}
+
+Po roznásobení mají rovnice tvar:
 
 
+\begin{align} \label{proj_roz}
+\begin{split}
+x' &= \frac{ax + by + c}{gx + hy + 1} \\
+y' &=\frac{dx + ey + f}{gx + hy + 1}
+\end{split}
+\end{align}
 
+Následně lze přejít k vyrovnání a jsou získány vyrovnané veličiny.
 
-
-
-
+\section{Křivková a vyrovnávací transformace}
+Křivková transformace (spline transformation) a vyrovnávací transformace (adjust transformation) při georeferencování ztotožní identické body nezávisle na jejich rozmístění. Důsledkem toho může docházet k výrazným deformacím. Křivková transformace využívá pro výpočet matematicky generované křivky, zatímco vyrovnávací transformace kombinuje polynomické transformace s interpolačními technikami. 
 
 
 
@@ -715,7 +766,7 @@ Dílčí části Strakonického hradu byly vytvářeny lomenými čarami a oblou
 
 Fotografování v tomto poměrně velkém časovém rozmezí bylo zapřičiněno z~několika důvodů. Hlavní vliv na fotografování měly restaurátorské práce, neboť je hrad v rozsáhlé rekonstrukci. Dalším činitelem bylo počasí a povětrnostní podmínky. V neposlední řadě má vliv i časové období, kdy je fotografování prováděno. U částí hradu, kde je znatelná vegetace, se počkalo na jaro na hlavní vegetační období, aby nebyly fotografie mdlé.
 
-Velká výhoda softwaru Sketchup je ta, že lze projekt geolokalizovat. Geolokalizace vzniká jednoduchou volbou \textit{File $\rightarrow$ Geo-location $\rightarrow$ Add \mbox{location ... }}. Model byl publikován na webovou stránku 3D Warehouse pomocí volby funkce \textit{File $\rightarrow$ 3D Warehouse $\rightarrow$ Share Model ... }. Zároveň byla vytvořena krátka animace, ve~které byla snaha zachytit model z několika různých pohledů. Tato animace je součástí příloh a byla publikována na server YouTube, který v současné době spadá také pod společnost Google a prezentuje se jako dceřiná společnost této firmy. 
+Velká výhoda softwaru SketchUp je ta, že lze projekt geolokalizovat. Geolokalizace vzniká jednoduchou volbou \textit{File $\rightarrow$ Geo-location $\rightarrow$ Add \mbox{location ... }}. Model byl publikován na webovou stránku 3D Warehouse pomocí volby funkce \textit{File $\rightarrow$ 3D Warehouse $\rightarrow$ Share Model ... }. Zároveň byla vytvořena krátka animace, ve~které byla snaha zachytit model z několika různých pohledů. Tato animace je součástí příloh a byla publikována na server YouTube, který v současné době spadá také pod společnost Google a prezentuje se jako dceřiná společnost této firmy. 
 
 Při zpracování byla nejprve v modelu vytvořena gotická věž Rumpál (obr. č. \ref{obrazek:sk1}), která je nejspíš nejvýraznější ikona hradu. Následně bylo vymodelováno II. hlavní nádvoří (obr. č. \ref{obrazek:sk2}). Poté byl vytvořen kostel sv. Prokopa s ním související I. hlavní nádvoří (obr. č. \ref{obrazek:sk3}). Na obrázku č. \ref{obrazek:sk4} lze vidět výsledný model, na obrázku č. \ref{obrazek:sk5} je zobrazen tento model včetně textur. Na obrázku č. XX je již finální podoba hradu se všemi detaily.
 
@@ -761,33 +812,22 @@ Animace - youtube, celý model - 3D warehouse, nějaké porovnání fotografií 
 
 
 \section{Zpracování kartografických podkladů}
-
-Císařské povinné otisky stabilního katastru a Státní mapa odvozená byly zapůjčeny od Českého úřadu zeměměřického a katastrálního ve formátu JPG ve formě rastrových dat. Tato data bylo nutné zgeoreferencovat \footnote{Proces umístění rastru do známého souřadnicového systému}. Pro georeferencování byl použit systém ArcGIS od společnosti ESRI. 
-
-ArcGIS vyvinula již zmíněná společnost ESRI, která se zabývá vývojem softwaru pro práci s geografickými informačními systémy. Zakladatelem společnosti byl Jack Dangermond. ArcGIS je primárně určen pro práci s prostorovými daty, jejich tvorbu, správu či analýzu.
+Zpracování kartografických podkladů probíhalo v softwaru ArcGIS od společnosti ESRI, která se zabývá vývojem softwaru pro práci s geografickými informačními systémy. Zakladatelem společnosti byl Jack Dangermond. ArcGIS je primárně určen pro práci s prostorovými daty, jejich tvorbu, správu či analýzu.
 
 Před samotným zpracováním byla zapotřebí příprava prostředí a mapového okna v programu ArcMap. Nejprve byla vytvořena geodatabáze \textit{Otava.gdb}. Geodatabáze je interní formát společnosti ESRI, který slouží k ukládání a manipulaci s prostorovými daty. Velkou výhodou je to, že všechny soubory jsou uloženy v jednom adresáři. Pro geodatabázi lze nastavit i defaultní souřadnicový systém, pro databázi \textit{Otava.gdb} byl zvolen S-JTSK Krovak East North (EPSG: 5514).
 
-(sepsat stromovitě feature class, relativní cesta)
+Pro mapový dokument byla zvolena možnost ukládání relativní cesty ve zdrojích dat. Relativní cesta byla nastavena z toho důvodu, že zpracování probíhalo na více počítačích. 
 
-V této práci byl použit program ArcGIS použit zejména pro georeferencování mapových rastrů, dále pro tvorbu dílčích tematických map a 3D vizualizaci vytvořené krajiny. Při georeferencování je potřebná znalost tzv. identických či vlícovacích bodů, tedy takových bodů, jejichž souřadnice jsou známy jak v mapovém obraze, tak ve vybraném souřadnicovém systému. Nejvhodnějšími identickými body jsou body mapového rámu, souřadnicové sítě či objekty, u nichž se předpokládá určitá stabilita (půdorysy kostelů, body triangulační sítě...). 
+
+\subsection{Georeferencování}
+
+Císařské povinné otisky stabilního katastru a Státní mapa odvozená byly zapůjčeny od Českého úřadu zeměměřického a katastrálního ve formátu JPG ve formě rastrových dat. Tato data bylo nutné zgeoreferencovat \footnote{Proces umístění rastru do známého souřadnicového systému} za využití znalosti transformace. 
 
 Pro georeferencování posloužila jako podkladová data katastrální mapy, jež jsou k dispozici online prostřednictvím WMS služby poskytnuté ze serveru ČÚZK.  Jako vlícovací body byly u prvního rastru voleny přednostně takové body, u kterých se předpokládá již zmíněná stabilita a neměnnost. U dalších rastrů byly vlícovací body voleny s ohledem na klad mapových listů a plynulou návaznost se sousedními rastry. Vzhledem k měřítku mapových podkladů byl požadavek na maximální hodnotu směrodatné odchylky 2,5 m. 
 
-zde stručně představit arcgis, začátek, tvorba databáze, relativní cesta atd atd
-
-\section{Transformace}
-Při georeferencování mapových podkladů je nutné využít znalosti týkající se transformace. Transformací lze označit proces, při němž dochází k přechodu z jedné soustavy do druhé. V případě rastrových podkladů se jedná o transformaci z místní soustavy do uživatelem zvolené, v tomto případě do soustavy S-JTSK Krovak East North (EPSG: 5514). 
-
-Níže jsou popsány jednotlivé typy transformací, z nichž bylo velké množství použito při zpracování získaných dat. Při volbě vhodné transformace je potřeba zhodnotit množství a rozmístění identických bodů.
-
-\subsection{Obecná transformace}
-
-\subsection{Transformace v praxi}
-výřezy z ArcGISU, volba vlícováků, zhodnocení tabulky přesností atd atd
 
 
-\section{Tvorba mozaiky}
+\subsection{Tvorba mozaiky}
 Zpracovaná data bylo potřeba vhodně uložit a zobrazit jako celek. Za tímto účelem byla v prostředí ArcMap vytvořena geodatabáze s názvem \textit{Otava.gdb}. V této geodatabázi byl vytvořen nový objekt - mozaika. Zgeoreferencované listy byly následně do mozaiky nahrávány funkcí \textit{Add Raster To Mosaic Dataset}.
 
 Vzhledem k tomu, že každý z použitých mapových podkladů obsahoval mimorámové údaje, bylo nutné rastry oříznout. Za tímto účelem byla v rámci geodatabáze vytvořena polygonová vrstva. V této vrstvě byl pro každý mapový podklad vytvořet maskovací polygon, který přesně ohraničuje oblast z každého listu. Polygon byl pojmenován podle rastru, který ohraničuje, toto označení je dále využito jako propojovací klíč. 
@@ -795,20 +835,27 @@ Vzhledem k tomu, že každý z použitých mapových podkladů obsahoval mimorá
 Pro přiřazení ořezového polygonu k danému rastru byla v rámci mozaiky použita funkce \textit{Modify/Import Footprints or Boundary}, v níž byla definována polygonová vrstva a propojovací klíč. Výsledné ořezané listy lze vidět na obrázku č. xx. 
 
 
-\section{Vektorizace}
 
-\section{Tvorba vrstevnic}
 
-\subsection{ArcScan}
 
-\section{Topo to raster}
+
+\section{Modelování krajiny}
+
+\subsection{Vektorizace}
+
+\subsection{Tvorba vrstevnic}
+
+
+\subsection{Topo to raster}
 popsat funkci - vytvoří hydrologicky korektní model, co vše vstupuje a co je výstupem...
 
 \section{Procedurální modelování}
 
 \subsection{City Engine}
 
-\section{Publikování výsledků na internet}
+\section{Publikování výsledků na internetu}
+
+\section{Tvorba dílčích tematických map}
 
 
 \chapter{Prezentace na webových stránkách}
