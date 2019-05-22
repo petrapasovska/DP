@@ -84,7 +84,7 @@ Knih o hydrologii byla publikována celá řada. Vzhledem k tomu, že na~mnoha v
 
 Pro zhodnocení řeky jako takové nejvíce posloužila kniha \textit{Základy fyzické geografie} \cite{FGkniha}. Hydrologickou analýzou se ve velké míře zabývají na již zmíněné Univerzitě Karlově, kde byl vytvořen návod na cvičení od Miroslava Šobra \cite{UK}. Významnou publikací je také studijní materiál \textit{Hydrologie a hydropedologie} od~autorek Dany Pokorné a Jany Zábranské \cite{hydrovscht}. 
 
-Kartografií zabývající se publikace jsou opět převážně studijní materiály. Pro vizualizaci zájmové oblasti byly využity Císařské povinné otisky stabilního katastru. O vzniku a vlastnostech těchto map se lze dočíst v publikaci od Růženy Zimové a Bohuslava Veverky \textit{Topografická a tematická kartografie} \cite{topo_skripta}. Tématu mapování se také věnuje profesor František Hromádka, který s~kolektivem autorů publikoval učební text \textit{Mapování} \cite{mapovani_brno}.
+Kartografií zabývající se publikace jsou opět převážně studijní materiály. Pro vizualizaci zájmové oblasti byly využity historické mapy. O vzniku a vlastnostech těchto map se lze dočíst v publikaci od Růženy Zimové a profesora Bohuslava Veverky \textit{Topografická a tematická kartografie} \cite{topo_skripta}. Tématu mapování se také věnuje profesor František Hromádka, který s~kolektivem autorů publikoval učební text \textit{Mapování} \cite{mapovani_brno}.
 
 Zmíněné historické podklady bylo nutné zgeoreferencovat. Popis transformací a zpracování historických děl je kvalitně obsaženo v díle Jiřího Cajthamla \textit{Analýza starých map v digitálním prostředí na příkladu Műllerových map Čech a Moravy} \cite{transformace}. Autor se v tomto díle mimo transformace věnuje také popisu starých map našeho území a prezentaci vytvořených digitálních map.
 
@@ -823,48 +823,94 @@ Pro mapový dokument byla zvolena možnost ukládání relativní cesty ve zdroj
 
 Císařské povinné otisky stabilního katastru a Státní mapa odvozená byly zapůjčeny od Českého úřadu zeměměřického a katastrálního ve formátu JPG ve formě rastrových dat. Tato data bylo nutné zgeoreferencovat \footnote{Proces umístění rastru do známého souřadnicového systému} za využití znalosti transformace. 
 
-Pro georeferencování posloužila jako podkladová data katastrální mapy, jež jsou k dispozici online prostřednictvím WMS služby poskytnuté ze serveru ČÚZK.  Jako vlícovací body byly u prvního rastru voleny přednostně takové body, u kterých se předpokládá již zmíněná stabilita a neměnnost. U dalších rastrů byly vlícovací body voleny s ohledem na klad mapových listů a plynulou návaznost se sousedními rastry. Vzhledem k měřítku mapových podkladů byl požadavek na maximální hodnotu směrodatné odchylky 2,5 m. 
-
+Pro georeferencování posloužila jako podkladová data katastrální mapy, jež jsou k dispozici online prostřednictvím WMS služby poskytnuté ze serveru ČÚZK.  Jako vlícovací body byly u prvního rastru voleny přednostně takové body, u kterých se předpokládá již zmíněná stabilita a neměnnost. U dalších rastrů byly vlícovací body voleny s ohledem na klad mapových listů a plynulou návaznost se sousedními rastry. Vzhledem k měřítku mapových podkladů byl požadavek na maximální hodnotu směrodatné odchylky 2,5 m. Pro kvalitněji zgeoreferencovaná data byly vlícovací body voleny rovnoměrně rozmístěné po celém rastru a byla snaha o dosažení nadbytečného množství, aby při transformaci docházelo k vyrovnání MNČ. 
 
 
 \subsection{Tvorba mozaiky}
-Zpracovaná data bylo potřeba vhodně uložit a zobrazit jako celek. Za tímto účelem byla v prostředí ArcMap vytvořena geodatabáze s názvem \textit{Otava.gdb}. V této geodatabázi byl vytvořen nový objekt - mozaika. Zgeoreferencované listy byly následně do mozaiky nahrávány funkcí \textit{Add Raster To Mosaic Dataset}.
+Zpracovaná data bylo potřeba vhodně uložit a zobrazit jako celek. Za tímto účelem byl v geodatabázi vytvořen nový objekt - mozaika. Zgeoreferencované listy byly následně do mozaiky nahrávány funkcí \textit{Add Raster To Mosaic Dataset}.
 
 Vzhledem k tomu, že každý z použitých mapových podkladů obsahoval mimorámové údaje, bylo nutné rastry oříznout. Za tímto účelem byla v rámci geodatabáze vytvořena polygonová vrstva. V této vrstvě byl pro každý mapový podklad vytvořet maskovací polygon, který přesně ohraničuje oblast z každého listu. Polygon byl pojmenován podle rastru, který ohraničuje, toto označení je dále využito jako propojovací klíč. 
 
-Pro přiřazení ořezového polygonu k danému rastru byla v rámci mozaiky použita funkce \textit{Modify/Import Footprints or Boundary}, v níž byla definována polygonová vrstva a propojovací klíč. Výsledné ořezané listy lze vidět na obrázku č. xx. 
+Pro přiřazení ořezového polygonu k danému rastru byla v rámci mozaiky použita funkce \textit{Modify/Import Footprints or Boundary}, v níž byla definována polygonová vrstva a propojovací klíč. Výsledné hranice zgeoreferencovaných listů lze vidět na obrázku č. \ref{obrazek:CPO_viz}. 
 
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=17cm]{pics/klad_CPO.png}
+	\caption{Hranice zgeoreferencovaných listů CPO}
+	\label{obrazek:CPO_viz}
+\end{figure}
 
+\subsection{Vektorizace}
+Pro následné zpracování byly vybrané objekty z map CPO zvektorizovány, což znamená že byly převedeny z rastru na vektor. Vektorizace byla prováděna ručně a byly vektorizovány budovy, které byly dále rozdělovány na spalné a nespalné, lesy a řeka. 
 
+Pro vektorizaci byla vytvořena nová polygonová vrstva, do níž byly objekty ukládány. Tvorba objektů probíhala za pomoci funkce \textit{Create Features} v liště \textit{Editor}. 
 
 
 \section{Modelování krajiny}
+Základ pro modelování byl vytvořen v programu ArcMap, následné zpracování probíhalo v softwaru ArcPro. 
 
-\subsection{Vektorizace}
+\subsection{Vektorizace vrstevnic}
+Vrstevnice pro tvorbu 3D modelu byly převzaty z SMO-5. Před samotnou tvorbou bylo nutné rastry samostatně zpracovat, neboť pro vektorizaci sloužila nadstavba ArcScan, která dokáže pracovat pouze s rastry, které jsou definovány právě dvěma barvami. 
+
+Pro zpracování rastrů posloužil program IrfanView, který slouží k prohlížení obrázků, zvuků či videa. Program je pro nekomerční účely ke stažení zdarma. Podporuje velké množství grafických formátů, není paměťově náročný, dokáže měnit počet barev a přebarvovat grafické vstupy a umožňuje konverzi rastrů. Program byl přeložen do několika jazyků, včetně češtiny. 
+
+Při přebarvení byla zkopírována složka se zgeoreferencovanými SMO-5 a ty byly poté upraveny pro vektorizaci. Nejprve byla snížena barevná hloubka na 16 bitů, aby při volbě barvy byl sejmut odstín vrstevnic. Funkcí \textit{Replace Color – Replace source color} byly ručně vybírány pixely znázorňující vrstevnice, které byly následně přebarveny na růžovou, aby byl výrazný kontrast se zbylými pixely rastru. Poté byla snížena barevná hloubka na 2 bity, čímž vznikl černobílý rastr. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm]{pics/vrstevnice.png}
+	\caption{Předpřipravený přebarvený rastr pro vektorizaci}
+	\label{obrazek:vrstevniceruzova}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm]{pics/vrstevnice2.png}
+	\caption{Zpracovaný 2bitový rastr}
+	\label{obrazek:vrstevnice2bit}
+\end{figure}
+
+Tím, že byly používány soubory vzniklé při georeferencování, nebylo zapotřebí tyto rastry opětovně georeferencovat. Rastry načtené v ArcMapu byly reklasifikovány na 2 hodnoty – bílá a černá. Před zpracováním je nutné aktivovat nadstavbu ArcScan. Aktivace se nachází pod volbou \textit{Customize – Extenstions}. Zároveň byla vytvořena liniová vrstva se dvěma atributy, nadmořskou výškou a délkou. 
+
 
 \subsection{Tvorba vrstevnic}
 
+Při spuštění nadstavby ArcScan je možnost smazání nežádoucích objektů (tiráž, chybné přebarvení atd.). K tomu slouží funkce \textit{Raster Cleanup}. Funkce nabízí mnoho možností jak zpracovat rastr v prostředí ArcGIS. V této práci byla použita pouze možnost \textit{Guma}, při níž byly nežádoucí prvky vymazány. 
+
+ArcScan nabízí 3 možnosti vektorizace, a to ruční, automatickou a poloautomatickou. Nejprve byla vyzkoušena automatická vektorizace. Při automatické vektorizaci bylo nutné nastavit parametry vektorizace (maximální tloušťku linie, míru vyhlazení, metodu řešení průsečíků, atd.) a zvolit barvu vrstvy. Zároveň bylo možné nastavit i styl generování vrstevnic, ten byl zvolen \textit{Contour}. Pro vyhledání co nejoptimálnějšího výsledku byly parametry několikrát měněny. Přesto nebyl výsledek postačující, mezi vrstevnicemi byly často mezery a zvektorizovaly se i objekty, které bylo následně nutné vymazat. 
+
+Z důvodu nespokojenosti s automatickou tvorbou byla vyzkoušena poloautomatická tvorba vrstevnic. Pro poloautomatickou tvorbu byla použita funkce \textit{Vectorization Trace}, která dokáže rozpoznat buňky, které na sebe navazují a vytvoří z nich linii. Poloautomatická tvorba probíhala současně s ruční, neboť na některých místech docházelo k tomu, že nenavazovala žádná buňka a bylo zapotřebí ručně přichytit linii na buňky, v jejichž směru vrstevnice pokračovala.
+
+Po vektorizaci vrstevnic byla vytvořena bodová vrstva obsahující výškové kóty. Kóty byly přejímány z SMO-5 spolu s výškami. Zároveň byla vytvořena liniová vrstva \textit{břehovka}, do níž byl zvektorizován břeh řeky. 
+
+
 
 \subsection{Topo to raster}
-popsat funkci - vytvoří hydrologicky korektní model, co vše vstupuje a co je výstupem...
+Funkcí \textit{Topo to raster} byla vytvořena barevná hypsometrie zadaného území. Do funkce vstupovala vrstva s výškovými kóty (\textit{PointElevation}), vrstevnice (\textit{Contour}), ohraničující polygon pro modelování (\textit{Boundary}) a břehovka (\textit{Contour}). Funkce nabízí mnoho dalších vstupů, je zde možnost nahrání vodního toku, útesu či pobřeží. Při modelování bylo vyzkoušeno několik různorodých vstupních dat, přesto zmíněný způsob se jevil jako nejsprávnější a téměř bezchybný. 
+
+\subsection{3D model krajiny}
+V programu ArcMap lze pro přibližnou představu vygenerovat stínovaný povrch terénu pomocí funkce \textit{Hillshade}. Pro tvorbu 3D modelu posloužil program ArcGIS Pro. Jedná se o nově vytvořený software, jehož hlavním cílem je zjednodušení práce. Narozdíl od ArcMap umožňuje v rámci aplikace pracovat s několika mapovými okny současně. 
+
+
+
 
 \section{Procedurální modelování}
 
 \subsection{City Engine}
 
-\section{Publikování výsledků na internetuv}
-
-\section{Tvorba dílčích tematických map}
+\section{Publikování výsledků na internetu}
 
 
 \chapter{Prezentace na webových stránkách}
-I přes znalost značkovacího jazyka HTML byla webová stránka vytvářena online přes stránku Wix. Stránka Wix nabízí možnost bezplatného webhostingu, případně placené verze v případě, že uživatel nechce na svých webových stránkách zobrazit reklamy či chce využít nějakých prémiových služeb. Velkou výhodou tohoto webu je interaktivní tvorba, při níž uživatel pomocí 
+I přes znalost značkovacího jazyka HTML byla webová stránka vytvářena online přes stránku Wix. Stránka Wix nabízí možnost bezplatného webhostingu, případně placené verze, pokud uživatel nechce na svých webových stránkách zobrazit reklamy či chce využít jiných prémiových služeb. Velkou výhodou tohoto webu je interaktivní tvorba, při níž uživatel pomocí 
 
 \section{Jazyk webových stránek}
 
 \section{Náležitosti webové stránka}
+(nebo spíše struktura?)
 
+\section{Fotodokumentace}
 
 \chapter{Diskuze}
 
@@ -891,6 +937,7 @@ Závěr
 	\item[GIS] Geografický informační systém
 	\item[HTML] Hypertext Markup Language
 	\item[JPG] Joint Photographic Experts Group
+	\item[MNČ] Metoda nejmenších čtverců
 	\item[SHP] Stavebně historický průzkum
 	\item[SÚRPMO] Státní ústav pro rekonstrukce památkových měst a objektů
 	\item[S-JTSK] Systém jednotné trigonometrické sítě katastrální
