@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="cs"><Esri><CreaDate>20190524</CreaDate><CreaTime>13132400</CreaTime><ArcGISFormat>1.0</ArcGISFormat><SyncOnce>TRUE</SyncOnce><DataProperties><lineage><Process ToolSource="d:\petule\arcgis\desktop10.6\ArcToolbox\Toolboxes\Data Management Tools.tbx\CreateRandomPoints" Date="20190524" Time="131307">CreateRandomPoints D:\petule\github\DP\georeferencovani\Otava.gdb stromy lesy "0 0 250 250" stromy "5 Meters" POINT 0</Process></lineage></DataProperties></Esri></metadata>
