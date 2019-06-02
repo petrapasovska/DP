@@ -1,0 +1,43 @@
+Tema: Kartograficka vizualizace vyvoje uzemi v udoli reky Otavy v okoli Strakonic
+
+Autor: Bc. Petra Pasovska
+
+Odkazy na webove stranky objektu
+
+
+-----------------------------------------------------------------------------------
+
+3D model Strakonickeho hradu:
+
+https://3dwarehouse.sketchup.com/model/200ae101-7bc3-40ec-99aa-b3a07a474835/Strakonicky-hrad
+
+-----------------------------------------------------------------------------------
+
+Krátka animace vytvoøeného 3D modelu Strakonickeho hradu na serveru YouTube:
+
+https://www.youtube.com/watch?v=s0mvn2zHmyI
+
+-----------------------------------------------------------------------------------
+
+Detailnìjší animace vytvoøeného 3D modelu Strakonickeho hradu na serveru YouTube:
+
+https://youtu.be/p3Pabxycr-k
+
+-----------------------------------------------------------------------------------
+
+2D vytvoøená webová aplikace v prostøedí ArcGIS Online:
+
+https://arcg.is/1yGCeu
+
+-----------------------------------------------------------------------------------
+
+3D vytvoøená webová aplikace v prostøedí ArcGIS Online:
+
+https://arcg.is/1mzPyn
+
+-----------------------------------------------------------------------------------
+
+
+Vytvoøené webové stránky:
+
+https://www.otava-strakonice.com/
